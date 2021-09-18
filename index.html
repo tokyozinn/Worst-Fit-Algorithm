@@ -1,0 +1,48 @@
+<script>
+    let tamMemoria = [ 100, 500, 200, 300, 600 ]; 
+    let tamProcesso = [ 212, 417, 112, 426 ];
+
+    let m = tamMemoria.length;
+    let n = tamProcesso.length;
+
+    document.write("Tamanho dos blocos de memória: ", tamMemoria);
+    document.write("<br>");
+
+    document.write("Tamanho dos processos: ", tamProcesso);
+    document.write("<br>");
+    document.write("<br>");
+
+    worstFit(tamMemoria, m, tamProcesso, n);
+
+    function worstFit(tamMemoria, m, tamProcesso, n){
+        let idxBlocoMemoria = new Array(n);
+
+        for(let i = 0; i < idxBlocoMemoria.length; i++){
+            idxBlocoMemoria[i] = -1;
+        }
+            
+
+        for(let i = 0; i < n; i++){
+            let piorIdx = -1;
+            for(let j = 0; j < m; j++){
+                if (tamMemoria[j] >= tamProcesso[i]){
+                    if (piorIdx == -1)
+                        piorIdx = j;
+                    else if (tamMemoria[piorIdx] < tamMemoria[j])
+                        piorIdx = j;
+                }
+            }
+            if (piorIdx != -1){
+                idxBlocoMemoria[i] = piorIdx; //5
+                tamMemoria[piorIdx] -= tamProcesso[i];
+            }
+        }
+
+        document.write("N° Iterações" + "Tamanho a ser alocado" + "Index do bloco de memória");
+        document.write("<br>");
+        for(let i = 0; i < n; i++){
+            document.write(i + 1 + "&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;", + tamProcesso[i] + "           ", + idxBlocoMemoria[i] != -1 ? idxBlocoMemoria[i]: "Sem espaço suficiente");  
+            document.write("<br>");               
+        }
+    }     
+</script>
