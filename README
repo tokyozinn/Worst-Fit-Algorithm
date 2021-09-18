@@ -1,0 +1,8 @@
+O algoritmo recebe dois arrays:
+um ilustrando o tamanho de processos a serem alocados em memória e outro representando os blocos de memória de um SO.
+O algoritmo primeiramente itera sobre o array de blocos de memória e seleciona o bloco com maior capacidade. 
+Então, itera sobre os processos a serem alocados e compara com o bloco de memória e armazena o index do bloco de memória em outro conjunto, caso haja espaço disponível.
+O tamanho do processo subtrai o espaço no bloco em que foi alocado, e o processo se repete até que tenham sido iterados todos os processos.
+Os processos que não conseguem ser alocados a nenhum bloco de memória, não são atribuídos a nenhum deles.
+
+Para fins visuais, os resultados são apresentado num arquivo HTML.
